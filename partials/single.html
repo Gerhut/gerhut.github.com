@@ -1,0 +1,9 @@
+<h2 ng-show="gist">
+  <a href="#/" class="btn"><i class="icon-chevron-left"></i></a>
+  <span ng-bind="gist.description" ng-show="gist.description"></span>
+  <span ng-bind-template="Untitled[{{gist.id}}]" ng-hide="gist.description"></span>
+</h2>
+<article ng-repeat="file in gist.files">
+  <h3 ng-bind="file.filename"></h3>
+  <pre ng-bind="file.content"></pre>
+</article>

@@ -1,0 +1,6 @@
+<h2 ng-repeat="gist in gists">
+  <a ng-href="#/{{gist.id}}">
+    <span ng-bind="gist.description" ng-show="gist.description"></span>
+    <span ng-bind-template="Untitled[{{gist.id}}]" ng-hide="gist.description"></span>
+  </a>
+</h2>

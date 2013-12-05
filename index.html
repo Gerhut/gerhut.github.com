@@ -1,22 +1,31 @@
 <!doctype html>
-<html lang="en" ng-app="myApp">
+<html lang="en" ng-app="gistPage">
 <head>
   <meta charset="utf-8">
-  <title>My AngularJS App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title ng-bind-template="{{user.name}} - GistPage">GistPage</title>
+  
+  <!-- In production use:
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css"
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap-responsive.min.css"
+  -->
+  <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css"/>
+  <link rel="stylesheet" href="lib/bootstrap/css/bootstrap-responsive.css"/>
   <link rel="stylesheet" href="css/app.css"/>
 </head>
-<body>
-  <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-  </ul>
-
-  <div ng-view></div>
-
-  <div>Angular seed app: v<span app-version></span></div>
+<body ng-cloak>
+  <header class="container-fluid page-header" ng-show="user.name">
+    <img id="avatar" ng-src="{{user.avatar_url}}" class="img-polaroid">
+    <h1 id="user-info">
+      <span ng-bind="user.name"></span><br>
+      <small ng-bind-template="{{user.login}}'s Gists"></small>
+    </h1>
+  </header>
+  <div class="container-fluid" ng-view></div>
 
   <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js"></script>
   -->
   <script src="lib/angular/angular.js"></script>
   <script src="lib/angular/angular-route.js"></script>
